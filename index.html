@@ -6,7 +6,7 @@
         content="Localized Concept Erasure for Text-to-Image Diffusion Models Using Training-Free Gated Low-Rank Adaptation">
   <meta name="keywords" content="Concept erasing, Generative model, Diffusion model">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Concept Pinpoint Eraser for Text-to-image Diffusion Models via Residual Attention Gate</title>
+  <title>Localized Concept Erasure for Text-to-Image Diffusion Models Using Training-Free Gated Low-Rank Adaptation</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -44,7 +44,7 @@
 
 
 
-<!-- Sungjin Lim, Seunggyu Lee, Dong Un Kang, Se Young Chun -->
+<!-- Sungjin Lim, Se Young Chun -->
 
 <section class="hero">
   <div class="hero-body">
@@ -174,18 +174,26 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Residual Attention Gates (ResAGs) for CPE</h2>
+        <h2 class="title is-3">Low-rankedness of Features for a Concept in Diffusion Model</h2>
           <div className="container is-max-desktop">
               <img id="overview"
                        width="1200" height="600"
-                      src="./static/figures_CPE/figure_main_cpe_v3.png"
+                      src="./static/figures_GLoCE/figure_low_rankedness.png"
                       alt={"overview"}>
               </img>
 
               <div class="content has-text-justified"> 
                 <p>
-                  (a) Architecture of ResAG module in CA layers for selectively erasing a target concept while preserving remaining concepts. 
-                  (b) To erase multiple targets during inference, we merge multiple ResAGs by only adding the ResAG of the target with the highest gate value for each token.
+                  To verify the low-rankedness of features for a concept,
+                  we collected embeddings for each layer within diffusion
+                  models from generation of a few images of concepts using SD v1.4. From a few generations of the concept,
+                  we obtained thousands of token embeddings from a single
+                  forward pass of the model and repeated multiple diffusion
+                  timesteps. Then, we analyzed the spectrum of these stacked
+                  embeddings by singular value decomposition (SVD). This figure illustrates the spectrum analysis
+                  of embeddings from diverse concepts. Notably, we observed
+                  that only a small number of singular values are significant
+                  along various concepts.
                 </p>
               </div>
           </div>
