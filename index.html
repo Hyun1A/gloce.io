@@ -51,26 +51,21 @@
     <div class="container is-widescreen">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-2 publication-title">Concept Pinpoint Eraser for Text-to-image <br> Diffusion Models via Residual Attention Gate</h1>
-          <!-- <h2 class="title is-3 publication-title">ICLR 2025</h2> -->
+          <h1 class="title is-2 publication-title">
+            Localized Concept Erasure for Text-to-Image Diffusion Models <br> Using Training-Free Gated Low-Rank Adaptation
+          </h1>
+          <!-- <h2 class="title is-3 publication-title">CVPR 2025</h2> -->
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://icl.snu.ac.kr/members#h.fr65urxkwmgt">Byung Hyun Lee</a><sup>1</sup><sup>,</sup><sup>*</sup>,</span>
             <span class="author-block">
-              <a href="https://icl.snu.ac.kr/members#h.nae4o11xddqy">Sungjin Lim</a><sup>1</sup><sup>,</sup><sup>*</sup>,</span>
-            <span class="author-block">
-              <a href="https://icl.snu.ac.kr/members#h.xpy24qbdhd9w">Seunggyu Lee</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://minoh.io/">Dong Un Kang</a><sup>1</sup>,</span>
+              <a href="https://icl.snu.ac.kr/members#h.nae4o11xddqy">Sungjin Lim</a><sup>2</sup><sup>,</sup><sup>*</sup>,</span>
             <span class="https://icl.snu.ac.kr/members#h.vtqn6t6r1xdc">
-              <a href="https://icl.snu.ac.kr/pi">Se Young Chun</a><sup>1</sup><sup>,</sup><sup>2</sup><sup>,</sup><sup>&#8224</sup></span>
+              <a href="https://icl.snu.ac.kr/pi">Se Young Chun</a><sup>1</sup><sup>,</sup><sup>2</sup><sup>,<sup>3</sup><sup>,</sup><sup>&#8224</sup></span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Department of Electrical and Computer Engineering, Seoul National University</span>
-          </div>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>2</sup>INMC & IPAI, Seoul National University</span>
+            <span class="author-block"><sup>1</sup>Department of ECE, <sup>2</sup>IPAI, <sup>3</sup>INMC, Seoul National University</span>
           </div>
           <div class="is-size-10 publication-authors">
             <span class="author-block">* Equal contribution, &#8224 Corresponding author</span>
@@ -80,7 +75,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://openreview.net/forum?id=ZRDhBwKs7l"
+                <a href="https://github.com/Hyun1A/GLoCE"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -88,21 +83,9 @@
                   <span>Paper</span>
                 </a>
               </span>
-              <!-- Video Link. -->
-              <!--
-              <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
-              -->
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/Hyun1A/CPE"
+                <a href="https://github.com/Hyun1A/GLoCE"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -110,17 +93,6 @@
                   <span>Code</span>
                   </a>
               </span>
-              <!-- Dataset Link. -->
-              <!--
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
-              -->
             </div>
           </div>
         </div>
@@ -141,19 +113,23 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Remarkable progress in text-to-image diffusion models has brought a major concern about potentially generating images
-            on inappropriate or trademarked concepts. Concept erasing has been investigated with the goals of deleting target
-            concepts in diffusion models while preserving other concepts with minimal distortion. To achieve these goals,
-            recent concept erasing methods usually fine-tune the cross-attention layers of diffusion models.
-            In this work, we first show that merely updating the cross-attention layers in diffusion models,
-            which is mathematically equivalent to adding \emph{linear} modules to weights, may not be able to
-            preserve diverse remaining concepts. Then, we propose a novel framework, dubbed Concept Pinpoint Eraser (CPE),
-            by adding \emph{nonlinear} Residual Attention Gates (ResAGs) that selectively erase (or cut) target concepts
-            while safeguarding remaining concepts from broad distributions by employing an attention anchoring loss to prevent
-            the forgetting. Moreover, we adversarially train CPE with ResAG and learnable text embeddings in an iterative manner
-            to maximize erasing performance and enhance robustness against adversarial attacks. Extensive experiments on the
-            erasure of celebrities, artistic styles, and explicit contents demonstrated that the proposed CPE outperforms
-            prior arts by keeping diverse remaining concepts while deleting the target concepts with robustness against attack prompts.
+            Fine-tuning based concept erasing has demonstrated promising results in preventing generation of
+            harmful contents from text-to-image diffusion models by removing target concepts while preserving remaining concepts. 
+            To maintain the generation capability of diffusion models after concept erasure, 
+            it is necessary to remove only the image region containing the target concept when it locally appears in an image, 
+            leaving other regions intact. 
+            However, prior arts often compromise fidelity of the other image regions in order to erase the localized target concept appearing in a specific area, 
+            thereby reducing the overall performance of image generation. 
+            To address these limitations, we first introduce a framework called localized concept erasure, 
+            which allows for the deletion of only the specific area containing the target concept in the image while preserving the other regions. 
+            As a solution for the localized concept erasure, we propose a training-free approach, 
+            dubbed Gated Low-rank adaptation for Concept Erasure (GLoCE), 
+            that injects a lightweight module into the diffusion model. 
+            GLoCE consists of low-rank matrices and a simple gate, determined only by several generation steps for concepts without training. 
+            By directly applying GLoCE to image embeddings and designing the gate to activate only for target concepts, 
+            GLoCE can selectively remove only the region of the target concepts, even when target and remaining concepts coexist within an image. 
+            Extensive experiments demonstrated GLoCE not only improves the image fidelity to text prompts after erasing the localized target concepts, 
+            but also outperforms prior arts in efficacy, specificity, and robustness by large margin and can be extended to mass concept erasure.
           </p>
         </div>
       </div>
@@ -169,7 +145,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Overview of Concept Pinpoint Eraser (CPE)</h2>
+        <h2 class="title is-3">Overview of Gated Low-rank adaptation for Concept Erasure (GLoCE)</h2>
           <div className="container is-max-desktop">
               <img id="overview"
                        width="1200" height="600"
@@ -179,9 +155,12 @@
 
               <div class="content has-text-justified"> 
                 <p>
-                  (a) Comparison of fine-tuning approaches for concept erasing. Previous methods could affect both on target and remaining concepts as they merely fine-tunes CA layers.
-                  In contrast, our method, CPE, can adatively transmit the change for target concepts to erase while successfully suppressing it for remaining concepts, by using the proposed ResAGs.
-                  (b) Qualitative results on erasing “Claude Monet” artistic style, comparing with a baseline.
+                  Illustration of overall results of concept erasing after erasing 50 celebrities by a baseline \cite{lu2024mace} and ours. 
+                  To preserve generation capability after concept erasing, it is essential to maintain high fidelity for remaining concepts 
+                  even when target concepts are included in same text prompts. 
+                  However, baselines often struggle to achieve the fidelity. 
+                  The proposed method, GLoCE, significantly improves this fidelity while demonstrating strong performance in efficacy, specificity, and robustness, 
+                  which are key conditions for effective erasure.
                 </p>
               </div>
           </div>
