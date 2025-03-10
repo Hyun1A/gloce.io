@@ -268,7 +268,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Gate Mechanism to Enhance Efficacy and Specificity</h2>
+        <h2 class="title is-3">Qualitative Results on Localized Celebrities Erasure</h2>
           <div className="container is-max-desktop">
               <img id="overview"
                        width="1200" height="600"
@@ -278,9 +278,9 @@
 
               <div class="content has-text-justified"> 
                 <p>
-                  Gate mechanism to enhance the efficacy for target concepts 
-                  and specificity for remaining concepts. The parameters in the
-                  gate is determined only by generation of few images.
+                  Qualitative results of baselines and ours on localized celebrities erasure to evaluate the fidelity of the generated images. It shows that
+                  erasing only one target concept can degrade the fidelity of image containing both target and remaining celebrity on baselines, while GLoCE
+                  effectively erase the region of features of target concepts and successfully preserves the other region.
                 </p>
               </div>
           </div>
@@ -296,7 +296,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Gate Mechanism to Enhance Efficacy and Specificity</h2>
+        <h2 class="title is-3">Quantitative Results on Localized Celebrities Erasure</h2>
           <div className="container is-max-desktop">
               <img id="overview"
                        width="1200" height="600"
@@ -306,9 +306,8 @@
 
               <div class="content has-text-justified"> 
                 <p>
-                  Gate mechanism to enhance the efficacy for target concepts 
-                  and specificity for remaining concepts. The parameters in the
-                  gate is determined only by generation of few images.
+                   Comparison of baselines and the proposed method for image fidelity on text prompts containing target celebrities and remaining celebrities. 
+                   We measured accuracy in percentage and there harmonic mean of efficacy and specificity following MACE
                 </p>
               </div>
           </div>
@@ -316,21 +315,13 @@
     </div>
   </div>
 </section>
-
-
-
-
-
-
-
-
   
 
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Gate Mechanism to Enhance Efficacy and Specificity</h2>
+        <h2 class="title is-3">Qualitative Results on Celebrities Erasure for Prompts only Containing One Concept</h2>
           <div className="container is-max-desktop">
               <img id="overview"
                        width="1200" height="600"
@@ -340,9 +331,8 @@
 
               <div class="content has-text-justified"> 
                 <p>
-                  Gate mechanism to enhance the efficacy for target concepts 
-                  and specificity for remaining concepts. The parameters in the
-                  gate is determined only by generation of few images.
+                  Qualitative comparison on celebrities erasure when prompts contain either target or remaining concepts.
+                  To further verify the efficacy and specificity of the proposed method, we evaluated erasure and preservation performance across various domains with prompts only containing either target or remaining concepts.
                 </p>
               </div>
           </div>
@@ -364,7 +354,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Gate Mechanism to Enhance Efficacy and Specificity</h2>
+        <h2 class="title is-3">Quantitative Results on Celebrities Erasure for Prompts only Containing One Concept</h2>
           <div className="container is-max-desktop">
               <img id="overview"
                        width="1200" height="600"
@@ -374,9 +364,9 @@
 
               <div class="content has-text-justified"> 
                 <p>
-                  Gate mechanism to enhance the efficacy for target concepts 
-                  and specificity for remaining concepts. The parameters in the
-                  gate is determined only by generation of few images.
+                  Quantitative results on celebrities erasure. We used CS and GCD accuracy in percentage 
+                  (ACC<sub>t</sub> for target and ACC<sub>r</sub> for remaining concepts). 
+                  We also measured FID for COCO-30K, or KID (scaled by 100) for the other remaining concepts.
                 </p>
               </div>
           </div>
@@ -389,20 +379,11 @@
 
 
 
-
-
-
-
-
-
-
-
-
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Gate Mechanism to Enhance Efficacy and Specificity</h2>
+        <h2 class="title is-3">Results on Artistic Styles Erasure</h2>
           <div className="container is-max-desktop">
               <img id="overview"
                        width="1200" height="600"
@@ -412,9 +393,7 @@
 
               <div class="content has-text-justified"> 
                 <p>
-                  Gate mechanism to enhance the efficacy for target concepts 
-                  and specificity for remaining concepts. The parameters in the
-                  gate is determined only by generation of few images.
+                   Qualitative results of efficacy for target style and fidelity of remaining celebrity along the number of erased targets.
                 </p>
               </div>
           </div>
@@ -426,17 +405,11 @@
 
 
 
-
-
-
-
-
-
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Gate Mechanism to Enhance Efficacy and Specificity</h2>
+        <h2 class="title is-3">Results on Explicit Contents Erasure</h2>
           <div className="container is-max-desktop">
               <img id="overview"
                        width="1200" height="600"
@@ -446,9 +419,9 @@
 
               <div class="content has-text-justified"> 
                 <p>
-                  Gate mechanism to enhance the efficacy for target concepts 
-                  and specificity for remaining concepts. The parameters in the
-                  gate is determined only by generation of few images.
+                  Results of detected number of explicit contents using NudeNet detector on I2P 
+                  and preservation performance on MS-COCO 30K with CS, FID. GLoCE outperforms the efficacy 
+                  on explicit contents by a large margin while achieving the best specificity on COCO-30K.
                 </p>
               </div>
           </div>
@@ -462,26 +435,11 @@
 
 
 
-
-
-  
-
-
-
-
-
-
-  
-
-
-  
-
-
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Gate Mechanism to Enhance Efficacy and Specificity</h2>
+        <h2 class="title is-3"> Illustration of Gate Activation Map</h2>
           <div className="container is-max-desktop">
               <img id="overview"
                        width="1200" height="600"
@@ -491,9 +449,9 @@
 
               <div class="content has-text-justified"> 
                 <p>
-                  Gate mechanism to enhance the efficacy for target concepts 
-                  and specificity for remaining concepts. The parameters in the
-                  gate is determined only by generation of few images.
+                  Qualitative illustration of gate activation map for target concepts. It shows that the gate is precisely activated on the spatially
+                  local region of target concepts through multiple layers in a diffusion model and DDIM time steps. Through the local activation of gate,
+                  GLoCE can successfully erase the local region of target concepts.
                 </p>
               </div>
           </div>
@@ -503,30 +461,6 @@
 </section>
 
 
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 
 
 
