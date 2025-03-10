@@ -177,7 +177,7 @@
         <h2 class="title is-3">Low-rankedness of Features for a Concept in Diffusion Model</h2>
           <div className="container is-max-desktop">
               <img id="overview"
-                       width="400" height="200"
+                       width="500" height="250"
                       src="./static/figures_GLoCE/figure_low_rankedness.png"
                       alt={"overview"}>
               </img>
@@ -211,14 +211,18 @@
           <div className="container is-max-desktop">
               <img id="overview"
                        width="1200" height="600"
-                      src="./static/figures_CPE/fig3.png"
+                      src="./static/figures_GLoCE/figure_cf_lora.png"
                       alt={"overview"}>
               </img>
 
               <div class="content has-text-justified"> 
                 <p>
-                  Qualitative results of our CPE and baselines on multiple concepts erasing. 
-                  We erased 50 celebrities at once. It shows that CPE successfully preserves both similar and dissimilar concepts.
+                  (a) Extraction of principal components for each layer in a
+                      diffusion model only by generation of few samples to determine
+                      the low-rank matrices for erasing target concepts. We construct
+                      the mean and primary direction of the distribution of token embeddings of target and surrogate concepts
+                  (b) Closed-form LoRA for concept erasing. It projects the target embeddings to the low-rank subspace of
+                      mapping concepts after removing the information of target concept, inspired by linear guardedness.
                 </p>
               </div>
           </div>
