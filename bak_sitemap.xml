@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    {% for page in site.pages %}
+      {% unless page.sitemap == false %}
+      <url>
+          <loc>https://hyun1a.github.io/cpe.io{{ page.url }}</loc>
+          {% if page.lastmod %}
+          <lastmod>{{ page.lastmod | date_to_xmlschema }}</lastmod>
+          {% elsif page.date %}
+          <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
+          {% endif %}
+          <changefreq>hourly</changefreq>
+          <priority>0.5</priority>
+      </url>
+      {% endunless %}
+    {% endfor %}
+</urlset>

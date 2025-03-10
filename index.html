@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Concept Pinpoint Eraser for Text-to-image Diffusion Models via Residual Attention Gate">
+  <meta name="keywords" content="Concept erasing, Generative model, Diffusion model">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Concept Pinpoint Eraser for Text-to-image Diffusion Models via Residual Attention Gate</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+
+<!-- Sungjin Lim, Seunggyu Lee, Dong Un Kang, Se Young Chun -->
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-widescreen">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">Concept Pinpoint Eraser for Text-to-image <br> Diffusion Models via Residual Attention Gate</h1>
+          <!-- <h2 class="title is-3 publication-title">ICLR 2025</h2> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://icl.snu.ac.kr/members#h.fr65urxkwmgt">Byung Hyun Lee</a><sup>1</sup><sup>,</sup><sup>*</sup>,</span>
+            <span class="author-block">
+              <a href="https://icl.snu.ac.kr/members#h.nae4o11xddqy">Sungjin Lim</a><sup>1</sup><sup>,</sup><sup>*</sup>,</span>
+            <span class="author-block">
+              <a href="https://icl.snu.ac.kr/members#h.xpy24qbdhd9w">Seunggyu Lee</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://minoh.io/">Dong Un Kang</a><sup>1</sup>,</span>
+            <span class="https://icl.snu.ac.kr/members#h.vtqn6t6r1xdc">
+              <a href="https://icl.snu.ac.kr/pi">Se Young Chun</a><sup>1</sup><sup>,</sup><sup>2</sup><sup>,</sup><sup>&#8224</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Department of Electrical and Computer Engineering, Seoul National University</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>2</sup>INMC & IPAI, Seoul National University</span>
+          </div>
+          <div class="is-size-10 publication-authors">
+            <span class="author-block">* Equal contribution, &#8224 Corresponding author</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://openreview.net/forum?id=ZRDhBwKs7l"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!--
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/Hyun1A/CPE"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!--
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+  
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Remarkable progress in text-to-image diffusion models has brought a major concern about potentially generating images
+            on inappropriate or trademarked concepts. Concept erasing has been investigated with the goals of deleting target
+            concepts in diffusion models while preserving other concepts with minimal distortion. To achieve these goals,
+            recent concept erasing methods usually fine-tune the cross-attention layers of diffusion models.
+            In this work, we first show that merely updating the cross-attention layers in diffusion models,
+            which is mathematically equivalent to adding \emph{linear} modules to weights, may not be able to
+            preserve diverse remaining concepts. Then, we propose a novel framework, dubbed Concept Pinpoint Eraser (CPE),
+            by adding \emph{nonlinear} Residual Attention Gates (ResAGs) that selectively erase (or cut) target concepts
+            while safeguarding remaining concepts from broad distributions by employing an attention anchoring loss to prevent
+            the forgetting. Moreover, we adversarially train CPE with ResAG and learnable text embeddings in an iterative manner
+            to maximize erasing performance and enhance robustness against adversarial attacks. Extensive experiments on the
+            erasure of celebrities, artistic styles, and explicit contents demonstrated that the proposed CPE outperforms
+            prior arts by keeping diverse remaining concepts while deleting the target concepts with robustness against attack prompts.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+</section>
+
+
+
+  
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Overview of Concept Pinpoint Eraser (CPE)</h2>
+          <div className="container is-max-desktop">
+              <img id="overview"
+                       width="1200" height="600"
+                      src="./static/figures_CPE/fig1_v12.png"
+                      alt={"overview"}>
+              </img>
+
+              <div class="content has-text-justified"> 
+                <p>
+                  (a) Comparison of fine-tuning approaches for concept erasing. Previous methods could affect both on target and remaining concepts as they merely fine-tunes CA layers.
+                  In contrast, our method, CPE, can adatively transmit the change for target concepts to erase while successfully suppressing it for remaining concepts, by using the proposed ResAGs.
+                  (b) Qualitative results on erasing “Claude Monet” artistic style, comparing with a baseline.
+                </p>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Residual Attention Gates (ResAGs) for CPE</h2>
+          <div className="container is-max-desktop">
+              <img id="overview"
+                       width="1200" height="600"
+                      src="./static/figures_CPE/figure_main_cpe_v3.png"
+                      alt={"overview"}>
+              </img>
+
+              <div class="content has-text-justified"> 
+                <p>
+                  (a) Architecture of ResAG module in CA layers for selectively erasing a target concept while preserving remaining concepts. 
+                  (b) To erase multiple targets during inference, we merge multiple ResAGs by only adding the ResAG of the target with the highest gate value for each token.
+                </p>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Celebrities Erasure</h2>
+          <div className="container is-max-desktop">
+              <img id="overview"
+                       width="1200" height="600"
+                      src="./static/figures_CPE/fig3.png"
+                      alt={"overview"}>
+              </img>
+
+              <div class="content has-text-justified"> 
+                <p>
+                  Qualitative results of our CPE and baselines on multiple concepts erasing. 
+                  We erased 50 celebrities at once. It shows that CPE successfully preserves both similar and dissimilar concepts.
+                </p>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Artistic Styles Erasure</h2>
+          <div className="container is-max-desktop">
+              <img id="overview"
+                       width="1200" height="600"
+                      src="./static/figures_CPE/fig5_v2.png"
+                      alt={"overview"}>
+              </img>
+
+              <div class="content has-text-justified"> 
+                <p>
+                  Qualitative results on artistic styles erasure. We erased 100 artistic styles at once. 
+                  It shows that CPE successfully erases the target artistic styles while preserving diverse remaining concepts.
+                </p>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Explicit Contents Erasure</h2>
+          <div className="container is-max-desktop">
+              <img id="overview"
+                       width="1200" height="600"
+                      src="./static/figures_CPE/fig6_explicit_table.png"
+                      alt={"overview"}>
+              </img>
+
+              <div class="content has-text-justified"> 
+                <p>
+                  Results of detected number of explicit contents using NudeNet detector on I2P and preservation performance on MS-COCO 30K with CS, FID.
+                </p>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Robustness to adversarial attacks</h2>
+          <div className="container is-max-desktop">
+              <img id="overview"
+                       width="1200" height="600"
+                      src="./static/figures_CPE/adv_attack_main_fig_v2.png"
+                      alt={"overview"}>
+              </img>
+
+              <div class="content has-text-justified"> 
+                <p>
+                  Qualitative results of CPE and baselines on robustness to adversarial attacks by UnlearnDiff (Zhang et al., 2023). 
+                  It shows that CPE successfully defends against adversarial attack prompts.
+                </p>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      @InProceedings{lee2024cpe,
+          author    = {Lee, Byung Hyun and Lim, Sungjin and Lee, Seunggyu and Kang, Dong Un and Chun, Se Young},
+          title     = {Concept Pinpoint Eraser for Text-to-image Diffusion Models via Residual Attention Gate},
+          year      = {2024},
+      }</code></pre>
+  </div>
+</section>
+
+  
+  
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
