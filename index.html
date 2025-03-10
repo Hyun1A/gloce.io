@@ -218,7 +218,7 @@
               <div class="content has-text-justified"> 
                 <p>
                   (a) Extraction of principal components for each layer in a
-                      diffusion model only by generation of few samples to determine
+                      diffusion model by generation of few samples to determine
                       the low-rank matrices for erasing target concepts. We construct
                       the mean and primary direction of the distribution of token embeddings of target and surrogate concepts
                   (b) Closed-form LoRA for concept erasing. It projects the target embeddings to the low-rank subspace of
@@ -235,18 +235,19 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Artistic Styles Erasure</h2>
+        <h2 class="title is-3">Gate Mechanism to Enhance Efficacy and Specificity</h2>
           <div className="container is-max-desktop">
               <img id="overview"
                        width="1200" height="600"
-                      src="./static/figures_CPE/fig5_v2.png"
+                      src="./static/figures_GLoCE/figure_gate.png"
                       alt={"overview"}>
               </img>
 
               <div class="content has-text-justified"> 
                 <p>
-                  Qualitative results on artistic styles erasure. We erased 100 artistic styles at once. 
-                  It shows that CPE successfully erases the target artistic styles while preserving diverse remaining concepts.
+                  Gate mechanism to enhance the efficacy for target concepts 
+                  and specificity for remaining concepts. The parameters in the
+                  gate is determined only by generation of few images.
                 </p>
               </div>
           </div>
