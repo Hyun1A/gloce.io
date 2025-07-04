@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Continual Multiple Instance Learning with Enhanced Localization for Histopathological Whole Slide Image Analysis">
-  <meta name="keywords" content="Multiple instance learning, Continual learning, Histopathology WSI, Localization">
+        content="Localized Concept Erasure for Text-to-Image Diffusion Models Using Training-Free Gated Low-Rank Adaptation">
+  <meta name="keywords" content="Concept erasing, Generative model, Diffusion model">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Continual Multiple Instance Learning with Enhanced Localization for Histopathological Whole Slide Image Analysis</title>
+  <title>Localized Concept Erasure for Text-to-Image Diffusion Models Using Training-Free Gated Low-Rank Adaptation</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -43,24 +43,23 @@
 <body>
 
 
+
+<!-- Sungjin Lim, Se Young Chun -->
+
 <section class="hero">
   <div class="hero-body">
     <div class="container is-widescreen">
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-2 publication-title">
-            Continual Multiple Instance Learning with Enhanced Localization for Histopathological Whole Slide Image Analysis
+            Localized Concept Erasure for Text-to-Image Diffusion Models <wbr>Using Training-Free Gated Low-Rank Adaptation
           </h1>
           
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://hyun1a.github.io/">Byung Hyun Lee</a><sup>1</sup>,</span>
+              <a href="https://icl.snu.ac.kr/members#h.fr65urxkwmgt">Byung Hyun Lee</a><sup>1</sup><sup>,</sup><sup>*</sup>,</span>
             <span class="author-block">
-              <a href="https://ignoww.github.io/">Wongi Jeong</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://icl.snu.ac.kr/members#h.8qdjmhuhhfmc">Woojae Han</a><sup>2</sup>,</span>
-            <span class="author-block">
-              <a href="http://www.snuh.org/global/en/blog/01197/career.do">Kyoungbun Lee</a><sup>4</sup>,</span>
+              <a href="https://icl.snu.ac.kr/members#h.nae4o11xddqy">Sungjin Lim</a><sup>2</sup><sup>,</sup><sup>*</sup>,</span>
             <span class="https://icl.snu.ac.kr/members#h.vtqn6t6r1xdc">
               <a href="https://icl.snu.ac.kr/pi">Se Young Chun</a><sup>1</sup><sup>,</sup><sup>2</sup><sup>,</sup><sup>3</sup><sup>,</sup><sup>&#8224</sup></span>
           </div>
@@ -68,22 +67,17 @@
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Department of ECE, <sup>2</sup>IPAI, <sup>3</sup>INMC, Seoul National University</span>
           </div>
-          
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>4</sup>Department of Pathology, College of Medicine, Seoul National University</span>
-          </div>
-          
           <div class="is-size-10 publication-authors">
-            <span class="author-block">&#8224 Corresponding author</span>
+            <span class="author-block">* Equal contribution, &#8224 Corresponding author</span>
           </div>
           <h3 class="title is-5 publication-title" style="margin-top: 1rem;">
-            Accepted at ICCV 2025
+            Accepted at CVPR 2025
           </h3>
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2507.02395"
+                <a href="https://arxiv.org/abs/2503.12356"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -93,7 +87,7 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/Hyun1A/CoMEL"
+                <a href="https://github.com/Hyun1A/GLoCE"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -121,21 +115,23 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Multiple instance learning (MIL) significantly reduced annotation costs via bag-level weak labels for large-scale images, 
-            such as histopathological whole slide images (WSIs). 
-            However, its adaptability to continual tasks with minimal forgetting has been rarely explored, 
-            especially on instance classification for localization. 
-            Weakly incremental learning for semantic segmentation has been studied for continual localization, 
-            but it focused on natural images, leveraging global relationships among hundreds of small patches (e.g., $16 \times 16$) using pre-trained models. 
-            This approach seems infeasible for MIL localization due to enormous amounts ($\sim 10^5$) of large patches (e.g., $256 \times 256$) 
-            and no available global relationships such as cancer cells. 
-            To address these challenges, we propose Continual Multiple Instance Learning with Enhanced Localization (CoMEL), 
-            an MIL framework  for both localization and adaptability with minimal forgetting. 
-            CoMEL consists of (1) Grouped Double Attention Transformer (GDAT) for efficient instance encoding, 
-            (2) Bag Prototypes-based Pseudo-Labeling (BPPL) for reliable instance pseudo-labeling, 
-            and (3) Orthogonal Weighted Low-Rank Adaptation (OWLoRA) to mitigate forgetting in both bag and instance classification. 
-            Extensive experiments on three public WSI datasets demonstrate superior performance of CoMEL, 
-            outperforming the prior arts by up to $11.00\%$ in bag-level accuracy and up to $23.4\%$ in localization accuracy under the continual MIL setup.
+            Fine-tuning based concept erasing has demonstrated promising results in preventing generation of
+            harmful contents from text-to-image diffusion models by removing target concepts while preserving remaining concepts. 
+            To maintain the generation capability of diffusion models after concept erasure, 
+            it is necessary to remove only the image region containing the target concept when it locally appears in an image, 
+            leaving other regions intact. 
+            However, prior arts often compromise fidelity of the other image regions in order to erase the localized target concept appearing in a specific area, 
+            thereby reducing the overall performance of image generation. 
+            To address these limitations, we first introduce a framework called localized concept erasure, 
+            which allows for the deletion of only the specific area containing the target concept in the image while preserving the other regions. 
+            As a solution for the localized concept erasure, we propose a training-free approach, 
+            dubbed Gated Low-rank adaptation for Concept Erasure (GLoCE), 
+            that injects a lightweight module into the diffusion model. 
+            GLoCE consists of low-rank matrices and a simple gate, determined only by several generation steps for concepts without training. 
+            By directly applying GLoCE to image embeddings and designing the gate to activate only for target concepts, 
+            GLoCE can selectively remove only the region of the target concepts, even when target and remaining concepts coexist within an image. 
+            Extensive experiments demonstrated GLoCE not only improves the image fidelity to text prompts after erasing the localized target concepts, 
+            but also outperforms prior arts in efficacy, specificity, and robustness by large margin and can be extended to mass concept erasure.
           </p>
         </div>
       </div>
